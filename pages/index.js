@@ -7,7 +7,6 @@ export default function HomePage() {
   });
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
-  console.log(data);
   const counter = data.length
   return (
     <div>

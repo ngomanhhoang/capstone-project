@@ -9,7 +9,6 @@ export default function ShoppingItemCard({ name, category, quantity, id }) {
         <h3>{name}</h3>
         <Category category={category}>{category.name}</Category>
       </Info>
-      <label htmlFor={id}></label>
       <p>{quantity}</p>
     </Article>
   );
