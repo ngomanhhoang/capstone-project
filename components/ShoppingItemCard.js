@@ -10,7 +10,7 @@ export default function ShoppingItemCard({ name, category, quantity, id }) {
         <Category category={category}>{category.name}</Category>
       </Info>
       <label htmlFor={id}></label>
-      <Input value={quantity} id={id} name="quantity" type="number" min={0} />
+      <p>{quantity}</p>
     </Article>
   );
 }
