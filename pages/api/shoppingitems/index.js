@@ -5,7 +5,7 @@ export default async function handler(request, response) {
   await dbConnect();
 
   if (request.method === "GET") {
-    const shoppingitems = await ShoppingItem.find();
+    const shoppingitems = await ShoppingItem.find().populate("category")
     return response.status(200).json(shoppingitems);
   }
   return response.status(405).json({ status: "Method not allowed" });
