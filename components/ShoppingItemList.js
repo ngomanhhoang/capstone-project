@@ -3,7 +3,6 @@ import ShoppingItemCard from "./ShoppingItemCard";
 import styled from "styled-components";
 export default function ShoppingItemList({ shoppingData }) {
   return (
-    <>
       <List>
         {shoppingData.map((item) => {
           return (
@@ -18,7 +17,6 @@ export default function ShoppingItemList({ shoppingData }) {
           );
         })}
       </List>
-    </>
   );
 }
 
