@@ -13,6 +13,10 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: ["img.rewe-static.de"],
+  },
 };
+// next.config.js
 
 module.exports = nextConfig;
