@@ -36,7 +36,6 @@ const Category = styled.h4`
   border: 1px solid #000;
   color: #fff;
   border-radius: 20px;
-  padding: 3px;
+  padding: 5px 20px;
   text-align: center;
-  min-width: 150px;
 `;
