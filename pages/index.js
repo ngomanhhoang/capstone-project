@@ -25,9 +25,10 @@ export default function HomePage() {
 
   return (
     <div>
-      <ShoppingForm categories={data} onSubmit={addProduct} />
       <Heading>Shopping Buddy</Heading>
       <Counter>Total {counter} items in your shopping list</Counter>
+      <ShoppingForm categories={data} onSubmit={addProduct} />
+
       <ShoppingItemList shoppingData={data} />
     </div>
   );

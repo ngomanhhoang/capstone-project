@@ -12,13 +12,17 @@ export default async function handler(request, response) {
   }
 
   if (request.method === "POST") {
-    try {
-      const productData = request.body;
-      await ShoppingItem.create(productData);
-      return response.status(201).json({ status: "Product created" });
-    } catch (error) {
-      return response.status(400).json({ error: error.message });
-    }
+   try {
+  const productData = request.body;
+  console.log("POST DATA:", productData);
+  const item = await ShoppingItem.create(productData);
+  console.log("CREATED ITEM:", item);
+  return response.status(201).json(item);
+} catch (error) {
+  console.error("POST ERROR:", error);
+  return response.status(400).json({ error: error.message });
+}
+
   }
   return response.status(405).json({ status: "Method not allowed" });
 }
