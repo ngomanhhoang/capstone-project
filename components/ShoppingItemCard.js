@@ -33,9 +33,8 @@ const Input = styled.input`
 
 const Category = styled.h4`
   background-color: ${(props) => props.category.color};
-  border: 1px solid #000;
   color: #fff;
-  border-radius: 20px;
+  border-radius: 10px 10px;
   padding: 5px 20px;
   text-align: center;
 `;
