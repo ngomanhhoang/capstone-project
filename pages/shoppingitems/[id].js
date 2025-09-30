@@ -57,10 +57,9 @@ const Comment = styled.div`
 const CategoryDetail = styled.h4`
   background-color: ${(props) => props.color};
   display: inline-block;
-  border: 1px solid #000;
   color: #fff;
-  border-radius: 20px;
-  padding: 5px 15px;
+  border-radius: 10px 10px;
+  padding: 5px 20px;
 `;
 
 const Heading = styled.span`

@@ -1,18 +1,35 @@
 import ShoppingItemList from "@/components/ShoppingItemList";
+import ShoppingForm from "@/components/ShoppingForm";
 import useSWR from "swr";
 import styled from "styled-components";
 export default function HomePage() {
-  const { data, error, isLoading } = useSWR("/api/shoppingitems", {
+  const { data: shoppingItems, error, isLoading, mutate } = useSWR("/api/shoppingitems", {
     fallbackData: [],
   });
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
-  const counter = data.length
+  const counter = shoppingItems.length;
+
+  async function addProduct(product) {
+    const response = await fetch("/api/shoppingitems", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+    if (response.ok) {
+      mutate();
+    }
+  }
+
   return (
     <div>
       <Heading>Shopping Buddy</Heading>
       <Counter>Total {counter} items in your shopping list</Counter>
-      <ShoppingItemList shoppingData={data} />
+      <ShoppingForm onSubmit={addProduct} />
+
+      <ShoppingItemList shoppingData={shoppingItems} />
     </div>
   );
 }
@@ -23,4 +40,4 @@ const Heading = styled.h1`
 
 const Counter = styled.h2`
   text-align: center;
-`
+`;
