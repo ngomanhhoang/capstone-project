@@ -27,7 +27,7 @@ export default function HomePage() {
     <div>
       <Heading>Shopping Buddy</Heading>
       <Counter>Total {counter} items in your shopping list</Counter>
-      <ShoppingForm categories={data} onSubmit={addProduct} />
+      <ShoppingForm onSubmit={addProduct} />
 
       <ShoppingItemList shoppingData={data} />
     </div>

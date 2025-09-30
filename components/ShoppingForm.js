@@ -1,17 +1,17 @@
 import styled from "styled-components";
 import useSWR from "swr";
 export default function ShoppingForm({ onSubmit }) {
-  const { data, error, isLoading } = useSWR("/api/categories", {
+  const { data: categories, error, isLoading } = useSWR("/api/categories", {
     fallbackData: [],
   });
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-    onSubmit(data);
+    await onSubmit(data);
     event.target.reset();
   }
 
@@ -38,16 +38,22 @@ export default function ShoppingForm({ onSubmit }) {
           <option value="" disabled>
             Please select a category
           </option>
-          {data.map((item) => (
-            <option key={item._id} value={item._id}>
-              {item.name}
+          {categories.map((category) => (
+            <option key={category._id} value={category._id}>
+              {category.name}
             </option>
           ))}
         </StyledSelect>
       </InputContainer>
       <div>
         <label htmlFor="imageUrl"></label>
-        <input type="hidden" id="imageUrl" name="imageUrl" value="https://via.placeholder.com/150" required />
+        <input
+          type="hidden"
+          id="imageUrl"
+          name="imageUrl"
+          value="https://via.placeholder.com/150"
+          required
+        />
       </div>
 
       <InputContainer>
