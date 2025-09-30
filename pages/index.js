@@ -3,12 +3,12 @@ import ShoppingForm from "@/components/ShoppingForm";
 import useSWR from "swr";
 import styled from "styled-components";
 export default function HomePage() {
-  const { data, error, isLoading, mutate } = useSWR("/api/shoppingitems", {
+  const { data: shoppingItems, error, isLoading, mutate } = useSWR("/api/shoppingitems", {
     fallbackData: [],
   });
   if (error) return <div>{error.message}</div>;
   if (isLoading) return <div>loading...</div>;
-  const counter = data.length;
+  const counter = shoppingItems.length;
 
   async function addProduct(product) {
     const response = await fetch("/api/shoppingitems", {
@@ -29,7 +29,7 @@ export default function HomePage() {
       <Counter>Total {counter} items in your shopping list</Counter>
       <ShoppingForm onSubmit={addProduct} />
 
-      <ShoppingItemList shoppingData={data} />
+      <ShoppingItemList shoppingData={shoppingItems} />
     </div>
   );
 }
