@@ -24,25 +24,23 @@ export default function ShoppingDeleteItem() {
     return router.push("/");
   }
   if (!data) {
-    return <p>Please add a new shopping item...</p>
+    return <p>Please add a new shopping item...</p>;
   }
 
   return (
     <>
       <Link href={"/"}>Back</Link>
-      <h3>Delete Shopping Item</h3>
+      <h1>Delete Shopping Item</h1>
       <Message>
         <p>
-          Are you sure ?
+          Are you sure to delete <strong>{data.name}</strong> ?
         </p>
-        <div>
-          <StyledDelete onClick={() => handleEditItem(id)} type="submit">
+        <Wrapper>
+          <StyledDelete onClick={() => handleEditItem(id)} type="button">
             Delete
           </StyledDelete>
-          <StyledCancel onClick={handleBack} type="button">
-            Cancel
-          </StyledCancel>
-        </div>
+          <StyledCancel href={"/"}>Cancel</StyledCancel>
+        </Wrapper>
       </Message>
     </>
   );
@@ -65,12 +63,16 @@ const StyledDelete = styled.button`
   color: #fff;
   font-weight: bold;
   margin-bottom: 5px;
+  font-size: 14px;
   &&:hover {
     cursor: pointer;
   }
 `;
 
-const StyledCancel = styled.button`
+const StyledCancel = styled(Link)`
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
   width: 250px;
   padding: 0.5rem;
   border: none;
@@ -82,4 +84,9 @@ const StyledCancel = styled.button`
   &&:hover {
     cursor: pointer;
   }
+`;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
