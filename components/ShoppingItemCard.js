@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Link from "next/link";
 import ShoppingEditButton from "./ShoppingEditButton";
+import ShoppingDeleteButton from "./ShoppingDeleteButton";
 
 export default function ShoppingItemCard({ name, category, quantity, _id }) {
   return (
@@ -11,6 +12,7 @@ export default function ShoppingItemCard({ name, category, quantity, _id }) {
       </Info>
       <p>{quantity}</p>
       <ShoppingEditButton _id={_id} />
+      <ShoppingDeleteButton _id={_id}/>
     </Article>
   );
 }

@@ -66,7 +66,7 @@ export default function ShoppingForm({ onSubmit, defaultData, onCancel }) {
           type="hidden"
           id="imageUrl"
           name="imageUrl"
-          value={defaultData?.imageUrl || "https://via.placeholder.com/150"}
+          value={defaultData?.imageUrl || "https://img.rewe-static.de/9928239/46040366_digital-image.png?impolicy=s-products&imwidth=1080"}
         />
       </div>
 
@@ -125,6 +125,9 @@ const StyledButton = styled.button`
   color: #fff;
   font-weight: bold;
   margin-bottom: 5px;
+  &&:hover {
+    cursor: pointer;
+  }
 `;
 const StyledCategory = styled.p`
   margin-bottom: 0.5rem;
@@ -139,4 +142,7 @@ const StyledCancel = styled.button`
   color: #fff;
   font-weight: bold;
   margin-bottom: 5px;
+  &&:hover {
+    cursor: pointer;
+  }
 `;
