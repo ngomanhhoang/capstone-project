@@ -1,15 +1,16 @@
-import Link from "next/link";
-import { useState } from "react";
 import styled from "styled-components";
+import Link from "next/link";
+import ShoppingEditButton from "./ShoppingEditButton";
 
-export default function ShoppingItemCard({ name, category, quantity, id }) {
+export default function ShoppingItemCard({ name, category, quantity, _id }) {
   return (
     <Article>
-      <Info href={`shoppingitems/${id}`}>
+      <Info href={`shoppingitems/${_id}`}>
         <h3>{name}</h3>
         <Category category={category}>{category.name}</Category>
       </Info>
       <p>{quantity}</p>
+      <ShoppingEditButton _id={_id} />
     </Article>
   );
 }
@@ -25,10 +26,6 @@ const Article = styled.article`
   align-items: center;
   border: 1px solid #000;
   border-radius: 20px;
-`;
-const Input = styled.input`
-  height: 2rem;
-  width: fit-content;
 `;
 
 const Category = styled.h4`

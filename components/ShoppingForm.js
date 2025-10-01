@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import useSWR from "swr";
-export default function ShoppingForm({ onSubmit }) {
-  const { data: categories, error, isLoading } = useSWR("/api/categories", {
+export default function ShoppingForm({ onSubmit, defaultData, onCancel }) {
+  const {
+    data: categories,
+    error,
+    isLoading,
+  } = useSWR("/api/categories", {
     fallbackData: [],
   });
   if (error) return <div>{error.message}</div>;
@@ -12,15 +16,21 @@ export default function ShoppingForm({ onSubmit }) {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     await onSubmit(data);
-    event.target.reset();
+    if (!defaultData) event.target.reset();
   }
 
   return (
     <Form onSubmit={handleSubmit}>
-      <p>Add shopping item</p>
+      <p>{defaultData ? "Edit shopping item" : "Add shopping item"}</p>
       <InputContainer>
         <label htmlFor="name">Name </label>
-        <StyledInput type="text" id="name" name="name" required />
+        <StyledInput
+          type="text"
+          id="name"
+          name="name"
+          required
+          defaultValue={defaultData?.name}
+        />
       </InputContainer>
       <InputContainer>
         <label htmlFor="quantity">Quantity </label>
@@ -30,11 +40,16 @@ export default function ShoppingForm({ onSubmit }) {
           name="quantity"
           min={0}
           required
+          defaultValue={defaultData?.quantity}
         />
       </InputContainer>
       <InputContainer>
         <StyledCategory>Category</StyledCategory>
-        <StyledSelect name="category" required defaultValue="">
+        <StyledSelect
+          name="category"
+          required
+          defaultValue={defaultData?.category?._id || ""}
+        >
           <option value="" disabled>
             Please select a category
           </option>
@@ -51,17 +66,27 @@ export default function ShoppingForm({ onSubmit }) {
           type="hidden"
           id="imageUrl"
           name="imageUrl"
-          value="https://via.placeholder.com/150"
-          required
+          value={defaultData?.imageUrl || "https://via.placeholder.com/150"}
         />
       </div>
 
       <InputContainer>
         <label htmlFor="comment">Comment </label>
-        <StyledInput type="text" id="comment" name="comment" min={0} />
+        <StyledInput
+          type="text"
+          id="comment"
+          name="comment"
+          min={0}
+          defaultValue={defaultData?.comment}
+        />
       </InputContainer>
 
-      <StyledButton type="submit">Add</StyledButton>
+      <StyledButton type="submit">{defaultData ? "Edit" : "Add"}</StyledButton>
+      {onCancel && (
+        <StyledCancel type="button" onClick={onCancel}>
+          Cancel
+        </StyledCancel>
+      )}
     </Form>
   );
 }
@@ -99,7 +124,19 @@ const StyledButton = styled.button`
   background-color: #419edcff;
   color: #fff;
   font-weight: bold;
+  margin-bottom: 5px;
 `;
 const StyledCategory = styled.p`
   margin-bottom: 0.5rem;
+`;
+
+const StyledCancel = styled.button`
+  width: 300px;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 10px 10px;
+  background-color: #555555;
+  color: #fff;
+  font-weight: bold;
+  margin-bottom: 5px;
 `;

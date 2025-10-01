@@ -1,22 +1,22 @@
-
 import ShoppingItemCard from "./ShoppingItemCard";
 import styled from "styled-components";
 export default function ShoppingItemList({ shoppingData }) {
   return (
-      <List>
-        {shoppingData.map((item) => {
-          return (
-            <li key={item._id}>
-              <ShoppingItemCard
-                name={item.name}
-                category={item.category}
-                quantity={item.quantity}
-                id={item._id}
-              />
-            </li>
-          );
-        })}
-      </List>
+    <List>
+      {shoppingData.map((item) => {
+        return (
+          <li key={item._id}>
+            <ShoppingItemCard
+              name={item.name}
+              category={item.category}
+              quantity={item.quantity}
+              comment={item.comment}
+              _id={item._id}
+            />
+          </li>
+        );
+      })}
+    </List>
   );
 }
 
