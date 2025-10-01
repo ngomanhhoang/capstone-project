@@ -3,7 +3,12 @@ import ShoppingForm from "@/components/ShoppingForm";
 import useSWR from "swr";
 import styled from "styled-components";
 export default function HomePage() {
-  const { data: shoppingItems, error, isLoading, mutate } = useSWR("/api/shoppingitems", {
+  const {
+    data: shoppingItems,
+    error,
+    isLoading,
+    mutate,
+  } = useSWR("/api/shoppingitems", {
     fallbackData: [],
   });
   if (error) return <div>{error.message}</div>;
@@ -22,13 +27,11 @@ export default function HomePage() {
       mutate();
     }
   }
-
   return (
     <div>
       <Heading>Shopping Buddy</Heading>
       <Counter>Total {counter} items in your shopping list</Counter>
       <ShoppingForm onSubmit={addProduct} />
-
       <ShoppingItemList shoppingData={shoppingItems} />
     </div>
   );
