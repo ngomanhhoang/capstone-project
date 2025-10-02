@@ -25,7 +25,7 @@ export default function ShoppingPurchasedItem({
     </Wrapper>
   );
 }
-const Wrapper = styled.div`
+const Wrapper = styled.ul`
   min-width: 400px;
   list-style-type: none;
   margin: 0 3rem;
