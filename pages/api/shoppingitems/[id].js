@@ -17,5 +17,10 @@ export default async function handler(request, response) {
     await ShoppingItem.findByIdAndUpdate(id, shoppingItem);
     response.status(200).json({ status: "Shopping Item successfully updated." });
   }
+
+  if (request.method === "DELETE") {
+    await ShoppingItem.findByIdAndDelete(id)
+    response.status(200).json({ status: "Item successfully deleted." });
+  }
   return response.status(405).json({ status: "Method not allowed" });
 }

@@ -1,10 +1,11 @@
 import Link from "next/link";
 import styled from "styled-components";
 
-export default function ShoppingEditButton({ _id }) {
-  return <Edit href={`/shoppingitems/edit/${_id}`}>✏️</Edit>;
+export default function ShoppingDeleteButton({ _id }) {
+  return <Delete href={`/shoppingitems/delete/${_id}`}>❌</Delete>;
 }
-const Edit = styled(Link)`
+
+const Delete = styled(Link)`
   text-decoration: none;
   background-color: #cddccbff;
   border-radius: 20px;
