@@ -12,7 +12,7 @@ export default function HomePage() {
     "purchased-items",
     { defaultValue: [] }
   );
-  const [selectedCategory, setSelectedCategory] = useState(null)
+  const [selectedCategory, setSelectedCategory] = useState(null);
 
   const {
     data: shoppingItems,
@@ -76,6 +76,8 @@ export default function HomePage() {
       />
       {counterUnpurchased === 0 ? (
         <Message>No items yet</Message>
+      ) : filteredItems.length === 0 ? (
+        <Message>No items match the selected category</Message>
       ) : (
         <ShoppingItemList
           shoppingData={filteredItems}
