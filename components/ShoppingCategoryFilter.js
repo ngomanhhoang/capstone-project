@@ -22,7 +22,7 @@ export default function ShoppingCategoryFilter({
       <StyledSelect
         name="category"
         required
-        defaultValue=""
+        value={selectedCategory || ""}
         onChange={(e) => onSelectCategory(e.target.value)}
       >
         <option value="" disabled>
