@@ -5,16 +5,14 @@ import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
 import ShoppingPurchasedItem from "@/components/ShoppingPurchasedItem";
 import ShoppingCategoryFilter from "@/components/ShoppingCategoryFilter";
+import { useState } from "react";
 export default function HomePage() {
   // Mark as purchased
   const [purchasedIds, setPurchasedIds] = useLocalStorageState(
     "purchased-items",
     { defaultValue: [] }
   );
-  const [selectedCategory, setSelectedCategory] = useLocalStorageState(
-    "category-items",
-    { defaultValue: null }
-  );
+  const [selectedCategory, setSelectedCategory] = useState(null)
 
   const {
     data: shoppingItems,
@@ -32,11 +30,10 @@ export default function HomePage() {
     (item) => !purchasedIds.includes(item._id)
   );
 
-const purchasedItems = purchasedIds
-  .map(id => shoppingItems.find(item => item._id === id))
-  .filter(Boolean) // remove undefined if any
-  .reverse();
-
+  const purchasedItems = purchasedIds
+    .map((id) => shoppingItems.find((item) => item._id === id))
+    .filter((item) => item !== undefined && item !== null) // remove undefined if any
+    .reverse();
 
   function togglePurchased(id) {
     if (purchasedIds.includes(id)) {
