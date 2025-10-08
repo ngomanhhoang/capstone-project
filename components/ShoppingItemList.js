@@ -25,6 +25,11 @@ export default function ShoppingItemList({ shoppingData, onToggle,purchasedIds }
 const List = styled.ul`
   min-width: 400px;
   list-style-type: none;
-  margin: 5rem 3rem;
+  margin: 4rem 2rem;
   padding: 0;
+  gap: 1rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 `;

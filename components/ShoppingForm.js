@@ -21,7 +21,7 @@ export default function ShoppingForm({ onSubmit, defaultData, onCancel }) {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <p>{defaultData ? "Edit shopping item" : "Add shopping item"}</p>
+      <FormTitle>{defaultData ? "Edit shopping item" : "Add shopping item"}</FormTitle>
       <InputContainer>
         <label htmlFor="name">Name </label>
         <StyledInput
@@ -91,57 +91,82 @@ export default function ShoppingForm({ onSubmit, defaultData, onCancel }) {
   );
 }
 const Form = styled.form`
-  text-align: center;
   max-width: 400px;
-  margin: 0 auto;
+  margin: 4rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-align: center;
+`;
+const FormTitle = styled.p`
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 `;
 
 const InputContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 1rem auto;
+  margin: 1.5rem auto;
   max-width: 300px;
 `;
 
 const StyledInput = styled.input`
+  height: 2.5rem;
   width: 100%;
-  padding: 0.5rem;
-  box-sizing: border-box;
-  margin-top: 5px;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
 `;
 
 const StyledSelect = styled.select`
+  height: 2.5rem;
   width: 100%;
-  padding: 0.5rem;
-  box-sizing: border-box;
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #ffffff;
 `;
 
 const StyledButton = styled.button`
-  width: 300px;
-  padding: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+  padding: 0.75rem;
   border: none;
-  border-radius: 10px 10px;
-  background-color: #419edcff;
-  color: #fff;
-  font-weight: bold;
-  margin-bottom: 5px;
+  border-radius: 8px;
+  background-color: #007bff;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   &&:hover {
     cursor: pointer;
   }
 `;
 const StyledCategory = styled.p`
-  margin-bottom: 0.5rem;
+  margin: 0;
 `;
 
 const StyledCancel = styled.button`
-  width: 300px;
-  padding: 0.5rem;
+   width: 100%;
+  max-width: 300px;
+  margin-top: 0.5rem;
+  padding: 0.75rem;
   border: none;
-  border-radius: 10px 10px;
-  background-color: #555555;
-  color: #fff;
-  font-weight: bold;
-  margin-bottom: 5px;
+  border-radius: 8px;
+  background-color: #6b7280;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
   &&:hover {
     cursor: pointer;
   }
