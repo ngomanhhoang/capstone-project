@@ -5,7 +5,6 @@ import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
 import ShoppingPurchasedItem from "@/components/ShoppingPurchasedItem";
 import ShoppingCategoryFilter from "@/components/ShoppingCategoryFilter";
-import { useState } from "react";
 export default function HomePage() {
   // Mark as purchased
   const [purchasedIds, setPurchasedIds] = useLocalStorageState(

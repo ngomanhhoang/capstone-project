@@ -1,11 +1,22 @@
-import Link from "next/link";
 import styled from "styled-components";
-
+import { mutate } from "swr";
 export default function ShoppingDeleteButton({ _id }) {
-  return <Delete href={`/shoppingitems/delete/${_id}`}>❌</Delete>;
+  async function deleteItem() {
+    const confirmed = confirm("are you sure you want to delete?");
+    if (!confirmed) {
+      return;
+    }
+    const response = await fetch(`/api/shoppingitems/${_id}`, {
+      method: "DELETE",
+    });
+    if (response.ok) {
+      mutate(`/api/shoppingitems`);
+    }
+  }
+  return <Delete onClick={deleteItem}>❌</Delete>;
 }
 
-const Delete = styled(Link)`
+const Delete = styled.button`
   align-items: center;
   justify-content: center;
   text-decoration: none;
