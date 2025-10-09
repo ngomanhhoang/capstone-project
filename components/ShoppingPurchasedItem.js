@@ -34,15 +34,16 @@ const Wrapper = styled.ul`
 
 const Item = styled.li`
   position: relative;
-  background-color: gray;
-  border-radius: 20px;
+  border-radius: 12px;
+  opacity: 0.7;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     top: 50%;
-    width: 100%;
+    left: 1.5rem;
+    right: 1.5rem;
     height: 2px;
-    background-color: red;
+    background-color: #6b7280;
   }
 `;
