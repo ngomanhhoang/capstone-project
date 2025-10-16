@@ -1,12 +1,13 @@
 import ShoppingItemCard from "./ShoppingItemCard";
 import styled from "styled-components";
-export default function ShoppingItemList({ shoppingData, onToggle,purchasedIds }) {
+export default function ShoppingItemList({ shoppingData, onToggle,purchasedIds, isPurchased }) {
   return (
     <List>
       {shoppingData.map((item) => {
         return (
           <li key={item._id}>
             <ShoppingItemCard
+            style={{ textDecoration: isPurchased ? "line-through" : "none" }}
               name={item.name}
               category={item.category}
               quantity={item.quantity}
@@ -14,6 +15,7 @@ export default function ShoppingItemList({ shoppingData, onToggle,purchasedIds }
               _id={item._id}
               checked={purchasedIds.includes(item._id)}
               onChange = {() => onToggle(item._id)}
+              isPurchased={purchasedIds.includes(item._id)}
             />
           </li>
         );

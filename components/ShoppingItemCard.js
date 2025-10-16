@@ -3,9 +3,9 @@ import Link from "next/link";
 import ShoppingEditButton from "./ShoppingEditButton";
 import ShoppingDeleteButton from "./ShoppingDeleteButton";
 
-export default function ShoppingItemCard({ name, category, quantity, _id, onChange, checked }) {
+export default function ShoppingItemCard({ name, category, quantity, _id, onChange, checked, isPurchased }) {
   return (
-    <Article>
+    <Article $isPurchased={isPurchased}>
       <Checkbox type="checkbox" checked={checked} onChange={onChange}/>
       <Info href={`shoppingitems/${_id}`}>
         <ProductName>{name}</ProductName>
@@ -25,6 +25,7 @@ const Info = styled(Link)`
 `;
 const Article = styled.article`
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2.5rem;
@@ -33,6 +34,8 @@ const Article = styled.article`
   border-radius: 12px;
   background: #ffffff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  text-decoration: ${(props) => (props.$isPurchased ? "line-through" : "none")};
+  background-color: ${(props) => (props.$isPurchased ? "#8c8d90ff" : "")};
 `;
 
 const ProductName = styled.h3`

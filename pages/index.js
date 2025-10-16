@@ -3,7 +3,6 @@ import ShoppingForm from "@/components/ShoppingForm";
 import useSWR from "swr";
 import styled from "styled-components";
 import useLocalStorageState from "use-local-storage-state";
-import ShoppingPurchasedItem from "@/components/ShoppingPurchasedItem";
 import ShoppingCategoryFilter from "@/components/ShoppingCategoryFilter";
 import { useState } from "react";
 export default function HomePage() {
@@ -90,10 +89,11 @@ export default function HomePage() {
       {counterPurchased === 0 ? (
         <Message>No purchased items yet</Message>
       ) : (
-        <ShoppingPurchasedItem
+        <ShoppingItemList
           shoppingData={purchasedItems}
           onToggle={togglePurchased}
           purchasedIds={purchasedIds}
+          isPurchased={true}
         />
       )}
     </div>
