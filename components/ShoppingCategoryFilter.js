@@ -4,7 +4,6 @@ import styled from "styled-components";
 export default function ShoppingCategoryFilter({
   onSelectCategory,
   onClearFilter,
-  defaultData,
   selectedCategory,
 }) {
   const {

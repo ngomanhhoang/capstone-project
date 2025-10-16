@@ -35,11 +35,9 @@ export default function HomePage() {
     .reverse();
 
   function togglePurchased(id) {
-    if (purchasedIds.includes(id)) {
-      setPurchasedIds(purchasedIds.filter((pid) => pid !== id));
-    } else {
-      setPurchasedIds([...purchasedIds, id]);
-    }
+    setPurchasedIds((prev) =>
+      prev.includes(id) ? prev.filter((pid) => pid !== id) : [...prev, id]
+    );
   }
   const counterUnpurchased = unpurchasedItems.length;
   const counterPurchased = purchasedItems.length;
@@ -52,9 +50,7 @@ export default function HomePage() {
       },
       body: JSON.stringify(product),
     });
-    if (response.ok) {
-      mutate();
-    }
+    if (response.ok) mutate();
   }
 
   // Filter items
@@ -69,7 +65,7 @@ export default function HomePage() {
       <Counter>Total {counterUnpurchased} items in your shopping list</Counter>
       <ShoppingCategoryFilter
         selectedCategory={selectedCategory}
-        onSelectCategory={(category) => setSelectedCategory(category)}
+        onSelectCategory={setSelectedCategory}
         onClearFilter={() => setSelectedCategory(null)}
         defaultData={unpurchasedItems}
       />

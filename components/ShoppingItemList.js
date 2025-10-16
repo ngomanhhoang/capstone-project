@@ -7,7 +7,6 @@ export default function ShoppingItemList({ shoppingData, onToggle,purchasedIds, 
         return (
           <li key={item._id}>
             <ShoppingItemCard
-            style={{ textDecoration: isPurchased ? "line-through" : "none" }}
               name={item.name}
               category={item.category}
               quantity={item.quantity}
