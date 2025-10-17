@@ -3,10 +3,10 @@ import Link from "next/link";
 import ShoppingEditButton from "./ShoppingEditButton";
 import ShoppingDeleteButton from "./ShoppingDeleteButton";
 
-export default function ShoppingItemCard({ name, category, quantity, _id, onChange, checked, isPurchased }) {
+export default function ShoppingItemCard({ name, category, quantity, _id, onChange, isPurchased }) {
   return (
     <Article $isPurchased={isPurchased}>
-      <Checkbox type="checkbox" checked={checked} onChange={onChange}/>
+      <Checkbox type="checkbox" checked={isPurchased} onChange={onChange}/>
       <Info href={`shoppingitems/${_id}`}>
         <ProductName>{name}</ProductName>
         <Category category={category}>{category.name}</Category>

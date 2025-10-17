@@ -12,7 +12,6 @@ export default function ShoppingItemList({ shoppingData, onToggle,purchasedIds, 
               quantity={item.quantity}
               comment={item.comment}
               _id={item._id}
-              checked={purchasedIds.includes(item._id)}
               onChange = {() => onToggle(item._id)}
               isPurchased={purchasedIds.includes(item._id)}
             />
