@@ -89,7 +89,7 @@ export default function HomePage() {
           shoppingData={purchasedItems}
           onToggle={togglePurchased}
           purchasedIds={purchasedIds}
-          isPurchased={true}
+          isPurchased
         />
       )}
     </div>
