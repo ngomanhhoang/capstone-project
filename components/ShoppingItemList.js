@@ -1,6 +1,6 @@
 import ShoppingItemCard from "./ShoppingItemCard";
 import styled from "styled-components";
-export default function ShoppingItemList({ shoppingData, onToggle,purchasedIds }) {
+export default function ShoppingItemList({ shoppingData, onToggle,purchasedIds, isPurchased }) {
   return (
     <List>
       {shoppingData.map((item) => {
@@ -12,8 +12,8 @@ export default function ShoppingItemList({ shoppingData, onToggle,purchasedIds }
               quantity={item.quantity}
               comment={item.comment}
               _id={item._id}
-              checked={purchasedIds.includes(item._id)}
               onChange = {() => onToggle(item._id)}
+              isPurchased={purchasedIds.includes(item._id)}
             />
           </li>
         );

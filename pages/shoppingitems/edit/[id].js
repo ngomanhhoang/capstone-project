@@ -25,6 +25,7 @@ export default function ShoppingEditPage() {
       body: JSON.stringify(shoppingItem),
     });
     if (res.ok) {
+      mutate()
       router.push("/");
     }
   }
